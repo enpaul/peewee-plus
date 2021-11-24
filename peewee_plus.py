@@ -11,7 +11,7 @@ __url__ = "https://github.com/enpaul/peewee-plus/"
 __authors__ = ["Ethan Paul <24588726+enpaul@users.noreply.github.com>"]
 
 
-__all__ = ["PathField"]
+__all__ = ["PathField", "PrecisionFloatField"]
 
 
 class PathField(peewee.CharField):
@@ -72,3 +72,33 @@ class PathField(peewee.CharField):
             if self.relative_to
             else Path(super().python_value(value))
         )
+
+
+class PrecisionFloatField(peewee.FloatField):
+    """Field class for storing floats with custom precision parameters
+
+    This field adds support for specifying the ``M`` and ``D`` precision parameters of a
+    ``FLOAT`` field as specified in the `MySQL documentation`_.
+    accepts. See the `MySQL docs`_ for more information.
+
+    .. warning:: This field implements syntax that is specific to MySQL. When used with a
+                 different database backend, such as SQLite or Postgres, it behaves identically
+                 to :class:`peewee.FloatField`
+
+    .. note:: This field's implementation was adapted from here_
+
+    .. _`MySQL documentation`: https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html
+    .. _here: https://stackoverflow.com/a/67476045/5361209
+
+    :param max_digits: Maximum number of digits, combined from left and right of the decimal place,
+                       to store for the value.
+    :param decimal_places: Maximum number of digits that will be stored after the decimal place
+    """
+
+    def __init__(self, *args, max_digits: int = 10, decimal_places: int = 4, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.max_digits = max_digits
+        self.decimal_places = decimal_places
+
+    def get_modifiers(self):
+        return [self.max_digits, self.decimal_places]
