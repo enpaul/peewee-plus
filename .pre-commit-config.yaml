@@ -1,0 +1,59 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+        entry: end-of-file-fixer
+        language: system
+        types: [text]
+
+      - id: fix-encoding-pragma
+        name: fix-encoding-pragma
+        entry: fix-encoding-pragma
+        args:
+          - "--remove"
+        language: system
+        types: [python]
+
+      - id: trailing-whitespace-fixer
+        name: trailing-whitespace-fixer
+        entry: trailing-whitespace-fixer
+        language: system
+        types: [text]
+
+      - id: check-merge-conflict
+        name: check-merge-conflict
+        entry: check-merge-conflict
+        language: system
+        types: [text]
+
+      - id: reorder-python-imports
+        name: reorder-python-imports
+        entry: reorder-python-imports
+        args:
+          - "--unclassifiable-application-module=peewee_plus"
+        language: system
+        types: [python]
+
+      - id: black
+        name: black
+        entry: black
+        language: system
+        types: [python]
+
+      - id: blacken-docs
+        name: blacken-docs
+        entry: blacken-docs
+        language: system
+        types: [text]
+
+      - id: mdformat
+        name: mdformat
+        entry: mdformat
+        language: system
+        args:
+          - "--number"
+          - "--wrap=90"
+        types:
+          - markdown
