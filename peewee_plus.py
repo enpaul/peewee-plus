@@ -1,3 +1,17 @@
+"""Peewee+
+
+:constant SQLITE_DEFAULT_VARIABLE_LIMIT: The default number of variables that a single SQL query
+                                         can contain when interfacing with SQLite. The actual
+                                         number is set at compile time and is not easily
+                                         discoverable from within Python. This default value will
+                                         be correct for the vast majority of applications.
+
+:constant SQLITE_DEFAULT_PRAGMAS: The default pragmas that should be used when instantiating an
+                                  SQLite database connection. The value for this constant is taken
+                                  directly from the `Peewee documentation`_
+
+.. _`Peewee documentation`: http://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings
+"""
 import enum
 import json
 from pathlib import Path
@@ -163,13 +177,11 @@ class PathField(peewee.CharField):
         self.relative_to = relative_to
 
     def db_value(self, value: Path) -> str:
-        """Serialize a :class:`pathlib.Path` to a database string"""
         if value.is_absolute() and self.relative_to:
             value = value.relative_to(self.relative_to)
         return super().db_value(value)
 
     def python_value(self, value: str) -> Path:
-        """Serialize a database string to a :class:`pathlib.path` object"""
         return (
             self.relative_to / Path(super().python_value(value))
             if self.relative_to
@@ -246,7 +258,6 @@ class JSONField(peewee.TextField):
         self.load_params = load_params or dict()
 
     def db_value(self, value: Any) -> str:
-        """Convert the python value to the corresponding value to store in the database"""
         try:
             return super().db_value(json.dumps(value, **self.dump_params))
         except TypeError as err:
@@ -255,7 +266,6 @@ class JSONField(peewee.TextField):
             ) from err
 
     def python_value(self, value: str) -> Any:
-        """Convert the database-stored value to the corresponding python value"""
         try:
             return json.loads(super().python_value(value), **self.load_params)
         except json.JSONDecodeError as err:
