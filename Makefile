@@ -20,6 +20,7 @@ clean-py:
 	rm --recursive --force ./dist
 	rm --recursive --force ./build
 	rm --recursive --force ./*.egg-info
+	find ./ -type d -name __pycache__ -prune -exec rm --recursive --force {} \;
 
 clean: clean-tox clean-py; ## Clean temp build/cache files and directories
 
