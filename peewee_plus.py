@@ -20,6 +20,12 @@ __authors__ = ["Ethan Paul <24588726+enpaul@users.noreply.github.com>"]
 
 
 __all__ = [
+    "__title__",
+    "__version__",
+    "__license__",
+    "__summary__",
+    "__url__",
+    "__authors__",
     "calc_batch_size",
     "EnumField",
     "JSONField",
