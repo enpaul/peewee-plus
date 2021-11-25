@@ -254,8 +254,8 @@ class JSONField(peewee.TextField):
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
-        self.dump_params = dump_params or dict()
-        self.load_params = load_params or dict()
+        self.dump_params = dump_params or {}
+        self.load_params = load_params or {}
 
     def db_value(self, value: Any) -> str:
         try:
