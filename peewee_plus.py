@@ -20,13 +20,23 @@ __authors__ = ["Ethan Paul <24588726+enpaul@users.noreply.github.com>"]
 
 
 __all__ = [
+    "calc_batch_size",
+    "EnumField",
+    "JSONField",
     "PathField",
     "PrecisionFloatField",
-    "JSONField",
-    "EnumField",
+    "SQLITE_DEFAULT_PRAGMAS",
     "SQLITE_DEFAULT_VARIABLE_LIMIT",
-    "calc_batch_size",
 ]
+
+
+SQLITE_DEFAULT_PRAGMAS: Dict[str, Any] = {
+    "journal_mode": "wal",
+    "cache_size": -1 * 64000,
+    "foreign_keys": 1,
+    "ignore_check_constraints": 0,
+    "synchronous": 0,
+}
 
 
 SQLITE_DEFAULT_VARIABLE_LIMIT: int = 999

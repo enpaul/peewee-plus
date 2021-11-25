@@ -3,6 +3,8 @@ import uuid
 import peewee
 import pytest
 
+import peewee_plus
+
 
 @pytest.fixture(scope="function")
 def fakedb(tmp_path):
@@ -10,13 +12,7 @@ def fakedb(tmp_path):
 
     sqlite = peewee.SqliteDatabase(
         str(tmp_path / f"{uuid.uuid4()}.db"),
-        pragmas={
-            "journal_mode": "wal",
-            "cache_size": -1 * 64000,
-            "foreign_keys": 1,
-            "ignore_check_constraints": 0,
-            "synchronous": 0,
-        },
+        pragmas=peewee_plus.SQLITE_DEFAULT_PRAGMAS,
     )
 
     yield sqlite
