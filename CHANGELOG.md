@@ -2,6 +2,13 @@
 
 See also: [Github Release Page](https://github.com/enpaul/peewee-plus/releases).
 
+## Version 1.1.0
+
+View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.1.0),
+[PyPI](https://pypi.org/project/peewee-plus/1.1.0/)
+
+- Add decorator function for wrapping callables in a flat database transaction
+
 ## Version 1.0.0
 
 View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.0.0),
