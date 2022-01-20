@@ -12,7 +12,9 @@
 
 .. _`Peewee documentation`: http://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings
 """
+import contextlib
 import enum
+import functools
 import json
 from pathlib import Path
 from typing import Any
@@ -42,6 +44,7 @@ __all__ = [
     "__authors__",
     "calc_batch_size",
     "EnumField",
+    "flat_transaction",
     "JSONField",
     "PathField",
     "PrecisionFloatField",
@@ -129,6 +132,48 @@ def calc_batch_size(
             / (len(models[0]._meta.fields) + 1)  # pylint: disable=protected-access
         )
     return len(models)
+
+
+def flat_transaction(interface: peewee.Database):
+    """Database transaction wrapper that avoids nested transactions
+
+    A decorator that can be used to decorate functions or methods so that the entire callable
+    is executed in a single transaction context. If a transaction is already open then it will
+    be reused rather than opening a nested transaction.
+
+    Example usage:
+
+    .. code-block:: python
+
+      db = peewee.SqliteDatabase("test.db")
+
+
+      @flat_transaction(db)
+      def subquery():
+          ...
+
+
+      @flat_transaction(db)
+      def my_query():
+          ...
+          subquery()
+
+
+      # This call opens only a single transaction
+      my_query()
+
+    :param interface: Peewee database interface that should be used to open the transaction
+    """
+
+    def outer(func):
+        @functools.wraps(func)
+        def inner(*args, **kwargs):
+            with interface.atomic() if not interface.in_transaction() else contextlib.nullcontext():
+                return func(*args, **kwargs)
+
+        return inner
+
+    return outer
 
 
 class PathField(peewee.CharField):
