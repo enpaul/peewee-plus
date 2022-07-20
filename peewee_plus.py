@@ -364,7 +364,7 @@ class EnumField(peewee.CharField):
 
     def python_value(self, value: str) -> enum.Enum:
         try:
-            return self.enumeration[super().python_value(value)]
+            return None if value is None and self.null else self.enumeration[super().python_value(value)]
         except KeyError:
             raise peewee.IntegrityError(
                 f"Enum {self.enumeration.__name__} has no value with name '{value}'"
