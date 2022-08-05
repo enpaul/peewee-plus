@@ -2,6 +2,7 @@
 
 Various extensions, helpers, and utilities for [Peewee](http://peewee-orm.com)
 
+[![CI Status](https://github.com/enpaul/peewee-plus/workflows/CI/badge.svg?event=push)](https://github.com/enpaul/peewee-plus/actions)
 [![PyPI Version](https://img.shields.io/pypi/v/peewee-plus)](https://pypi.org/project/peewee-plus/)
 [![License](https://img.shields.io/pypi/l/peewee-plus)](https://opensource.org/licenses/MIT)
 [![Python Supported Versions](https://img.shields.io/pypi/pyversions/peewee-plus)](https://www.python.org)
