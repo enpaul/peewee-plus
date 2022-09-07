@@ -176,7 +176,10 @@ def flat_transaction(interface: peewee.Database):
     return outer
 
 
-class PathField(peewee.CharField):
+# TODO: The disable=abstract-method pragmas below are to get around new linting warnings
+# in pylint>2.12, but they haven't been addressed properly. They should be revisited
+# and fixed properly in the future.
+class PathField(peewee.CharField):  # pylint: disable=abstract-method
     """Field class for storing file paths
 
     This field can be used to simply store pathlib paths in the database without needing to
@@ -234,7 +237,7 @@ class PathField(peewee.CharField):
         )
 
 
-class PrecisionFloatField(peewee.FloatField):
+class PrecisionFloatField(peewee.FloatField):  # pylint: disable=abstract-method
     """Field class for storing floats with custom precision parameters
 
     This field adds support for specifying the ``M`` and ``D`` precision parameters of a
@@ -264,7 +267,7 @@ class PrecisionFloatField(peewee.FloatField):
         return [self.max_digits, self.decimal_places]
 
 
-class JSONField(peewee.TextField):
+class JSONField(peewee.TextField):  # pylint: disable=abstract-method
     """Field class for storing JSON-serializable data
 
     This field can be used to store a dictionary of data directly in the database without needing
@@ -319,7 +322,7 @@ class JSONField(peewee.TextField):
             ) from err
 
 
-class EnumField(peewee.CharField):
+class EnumField(peewee.CharField):  # pylint: disable=abstract-method
     """Field class for storing Enums
 
     This field can be used for storing members of an :class:`enum.Enum` in the database,
