@@ -2,11 +2,13 @@
 
 See also: [Github Release Page](https://github.com/enpaul/peewee-plus/releases).
 
-## Version 1.1.1
+## Version 1.2.0
 
-View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.1.1),
-[PyPI](https://pypi.org/project/peewee-plus/1.1.1/)
+View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.2.0),
+[PyPI](https://pypi.org/project/peewee-plus/1.2.0/)
 
+- Remove support for Python 3.6
+- Update development workflows to use Poetry 1.2
 - Fix nullable enums raising an `IntegrityError` when value is `None` (#1)
 
 ## Version 1.1.0
