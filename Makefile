@@ -33,11 +33,11 @@ source: ## Build Python source distribution package
 build: clean wheel source; ## Build all distribution packages
 
 test: clean-tox ## Run the project testsuite(s)
-	poetry run tox
+	poetry run tox --parallel
 
 publish: clean test build ## Build and upload to pypi (requires $PYPI_API_KEY be set)
 	@poetry publish --username __token__ --password $(PYPI_API_KEY)
 
 dev: ## Create local dev environment
-	poetry install --remove-untracked
+	poetry install --sync
 	poetry run pre-commit install
