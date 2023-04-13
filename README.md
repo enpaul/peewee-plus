@@ -99,8 +99,8 @@ are tracked on [Github](https://github.com/enpaul/peewee-plus/releases),
   [fork the repository](https://docs.github.com/en/enterprise/2.20/user/github/getting-started-with-github/fork-a-repo)
   and [open a pull request](https://github.com/enpaul/peewee-plus/compare).
 
-Developing this project requires at least [Python 3.7](https://www.python.org/downloads/)
-and at least [Poetry 1.0](https://python-poetry.org/docs/#installation). GNU Make can
+Developing this project requires [Python 3.10](https://www.python.org/downloads/) or later
+and [Poetry 1.2](https://python-poetry.org/docs/#installation) or later. GNU Make can
 optionally be used to quickly setup a local development environment, but this is not
 required.
 
