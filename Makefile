@@ -39,5 +39,5 @@ publish: clean test build ## Build and upload to pypi (requires $PYPI_API_KEY be
 	@poetry publish --username __token__ --password $(PYPI_API_KEY)
 
 dev: ## Create local dev environment
-	poetry install --sync
+	poetry install --sync --with dev --with ci --with test --with security --with static
 	poetry run pre-commit install
