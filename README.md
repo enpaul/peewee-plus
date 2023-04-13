@@ -57,28 +57,28 @@ when using SQLite
 
 ### Functions
 
-[`calc_batch_size`](blob/devel/peewee_plus.py#L75) - Helper function for writing
+[`calc_batch_size`](blob/devel/peewee_plus.py#L93) - Helper function for writing
 backend-agnostic batch queries while accounting for the
 [SQLite max variable limit](https://www.sqlite.org/limits.html#max_variable_number).
 
-[`flat_transaction`](blob/devel/peewee_plus.py#L141) - Decorator function for wrapping
+[`flat_transaction`](blob/devel/peewee_plus.py#L159) - Decorator function for wrapping
 callables in a database transaction without creating nested transactions
 
 ### Classes
 
-[`PathField`](blob/devel/peewee_plus.py#186) - A Peewee database field for storing
+[`PathField`](blob/devel/peewee_plus.py#204) - A Peewee database field for storing
 [Pathlib](https://docs.python.org/3/library/pathlib.html) objects, optionally relative to
 a runtime value.
 
-[`PrecisionFloatField`](blob/devel/peewee_plus.py#L244) - A Peewee database field for
+[`PrecisionFloatField`](blob/devel/peewee_plus.py#L262) - A Peewee database field for
 storing floats while specifying the
 [MySQL precision parameters](https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html)
 `M` and `D`
 
-[`JSONField`](blob/devel/peewee_plus.py#L275) - A Peewee database field for storing
+[`JSONField`](blob/devel/peewee_plus.py#L293) - A Peewee database field for storing
 arbitrary JSON-serializable data
 
-[`EnumField`](blob/devel/peewee_plus.py#L330) - A Peewee database field for storing Enums
+[`EnumField`](blob/devel/peewee_plus.py#L348) - A Peewee database field for storing Enums
 by name
 
 ## For Developers
