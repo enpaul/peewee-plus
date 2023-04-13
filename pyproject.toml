@@ -31,25 +31,37 @@ classifiers = [
 python = "^3.7.1"
 peewee = "^3.14.8"
 
-[tool.poetry.dev-dependencies]
-bandit = "^1.7.1"
-black = "^22.8.0"
-blacken-docs = "^1.12.0"
-ipython = "^7.29.0"
-mdformat = "^0.6.4"
-mdformat-gfm = "^0.2"
-mypy = "^0.910"
-pre-commit = "^2.15.0"
-pre-commit-hooks = "^4.0.1"
-pylint = "^2.13.0"
+[tool.poetry.group.test.dependencies]
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
-reorder-python-imports = "^2.6.0"
-safety = "^2.2.0"
 toml = "^0.10.2"
+ruamel-yaml = {version = "^0.17.21", python = "^3.10"}
+
+[tool.poetry.group.ci.dependencies]
+poetry = "^1.4.2"
 tox = "^3.24.4"
-tox-poetry-installer = {extras = ["poetry"], version = "^0.10.0"}
-types-toml = "^0.10.1"
+tox-poetry-installer = {version = "^0.10.0", extras = ["poetry"]}
+
+[tool.poetry.group.security.dependencies]
+bandit = {version = "^1.7.1", python = "^3.10"}
+poetry = {version = "^1.4.2", python = "^3.10"}
+safety = {version = "^2.2.0", python = "^3.10"}
+
+[tool.poetry.group.static.dependencies]
+black = {version = "^22.8.0", python = "^3.10"}
+blacken-docs = {version = "^1.12.0", python = "^3.10"}
+mdformat = {version = "^0.6.4", python = "^3.10"}
+mdformat-gfm = {version = "^0.2", python = "^3.10"}
+mypy = {version = "^0.910", python = "^3.10"}
+pre-commit = {version = "^2.15.0", python = "^3.10"}
+pre-commit-hooks = {version = "^4.0.1", python = "^3.10"}
+pylint = {version = "^2.13.0", python = "^3.10"}
+reorder-python-imports = {version = "^2.6.0", python = "^3.10"}
+toml = {version = "^0.10.2", python = "^3.10"}
+types-toml = {version = "^0.10.1", python = "^3.10"}
+
+[tool.poetry.group.dev.dependencies]
+ipython = {version = "^8.10.0", python = "^3.10"}
 
 [build-system]
 requires = ["poetry-core>=1.1.0"]
