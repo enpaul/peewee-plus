@@ -17,7 +17,11 @@ def test_sqlite(fakedb):
 
         data = peewee.IntegerField()
 
-    models = [TestModel(item) for item in range(500)]
+    # Three is just chosen as an arbitrary multiplier to ensure the value is larger than the
+    # sqlite variable limit
+    models = [
+        TestModel(item) for item in range(peewee_plus.SQLITE_DEFAULT_VARIABLE_LIMIT * 3)
+    ]
     assert (
         peewee_plus.calc_batch_size(models) <= peewee_plus.SQLITE_DEFAULT_VARIABLE_LIMIT
     )
