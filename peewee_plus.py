@@ -1,4 +1,6 @@
-"""Peewee+
+"""peewee+
+
+Various extensions, helpers, and utilities for `Peewee`_
 
 :constant SQLITE_DEFAULT_VARIABLE_LIMIT: The default number of variables that a single SQL query
                                          can contain when interfacing with SQLite. The actual
@@ -10,7 +12,9 @@
                                   SQLite database connection. The value for this constant is taken
                                   directly from the `Peewee documentation`_
 
-.. _`Peewee documentation`: http://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings
+.. _`Peewee`: https://docs.peewee-orm.com/en/latest/
+
+.. _`Peewee documentation`: https://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings
 """
 import contextlib
 import enum
@@ -254,8 +258,9 @@ class PrecisionFloatField(peewee.FloatField):  # pylint: disable=abstract-method
     .. _here: https://stackoverflow.com/a/67476045/5361209
 
     :param max_digits: Maximum number of digits, combined from left and right of the decimal place,
-                       to store for the value.
-    :param decimal_places: Maximum number of digits that will be stored after the decimal place
+                       to store for the value; corresponds to the ``M`` MySQL precision parameter.
+    :param decimal_places: Maximum number of digits that will be stored after the decimal place;
+                           corresponds to the ``D`` MySQL precision parameter.
     """
 
     def __init__(self, *args, max_digits: int = 10, decimal_places: int = 4, **kwargs):
@@ -270,7 +275,7 @@ class PrecisionFloatField(peewee.FloatField):  # pylint: disable=abstract-method
 class JSONField(peewee.TextField):  # pylint: disable=abstract-method
     """Field class for storing JSON-serializable data
 
-    This field can be used to store a dictionary of data directly in the database without needing
+    This field can be used to store a dictionary of data directly in the database
     without needing to call :func:`json.dumps` and :func:`json.loads` directly.
 
     ::

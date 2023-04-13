@@ -22,7 +22,7 @@ release history.
 
 ## Installing
 
-Peewee+ is [available on PyPI](https://pypi.org/project/peewee-plus/) and can be installed
+peewee+ is [available on PyPI](https://pypi.org/project/peewee-plus/) and can be installed
 using Poetry, Pipenv, or Pip:
 
 ```bash
@@ -57,30 +57,29 @@ when using SQLite
 
 ### Functions
 
-[`calc_batch_size`](https://github.com/enpaul/peewee-plus/blob/1.0.0/peewee_plus.py#L71) -
-Helper function for determining how to batch a create/update query with SQLite
+[`calc_batch_size`](blob/devel/peewee_plus.py#L75) - Helper function for writing
+backend-agnostic batch queries while accounting for the
+[SQLite max variable limit](https://www.sqlite.org/limits.html#max_variable_number).
 
-[`flat_transaction`](https://github.com/enpaul/peewee-plus/blob/devel/peewee_plus.py#L137)
-\- Decorator function for wrapping callables in a database transaction without creating
-nested transactions
+[`flat_transaction`](blob/devel/peewee_plus.py#L141) - Decorator function for wrapping
+callables in a database transaction without creating nested transactions
 
 ### Classes
 
-[`PathField`](https://github.com/enpaul/peewee-plus/blob/1.0.0/peewee_plus.py#179) - A
-Peewee database field for storing
+[`PathField`](blob/devel/peewee_plus.py#186) - A Peewee database field for storing
 [Pathlib](https://docs.python.org/3/library/pathlib.html) objects, optionally relative to
 a runtime value.
 
-[`PrecisionFloatField`](https://github.com/enpaul/peewee-plus/blob/1.0.0/peewee_plus.py#L237)
-\- A Peewee database field for storing floats while specifying the
+[`PrecisionFloatField`](blob/devel/peewee_plus.py#L244) - A Peewee database field for
+storing floats while specifying the
 [MySQL precision parameters](https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html)
 `M` and `D`
 
-[`JSONField`](https://github.com/enpaul/peewee-plus/blob/1.0.0/peewee_plus.py#L267) - A
-Peewee database field for storing arbitrary JSON-serializable data
+[`JSONField`](blob/devel/peewee_plus.py#L275) - A Peewee database field for storing
+arbitrary JSON-serializable data
 
-[`EnumField`](https://github.com/enpaul/peewee-plus/blob/1.0.0/peewee_plus.py#L322) - A
-Peewee database field for storing Enums by name
+[`EnumField`](blob/devel/peewee_plus.py#L330) - A Peewee database field for storing Enums
+by name
 
 ## For Developers
 
