@@ -2,6 +2,14 @@
 
 See also: [Github Release Page](https://github.com/enpaul/peewee-plus/releases).
 
+## Version 1.2.1
+
+View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.2.1),
+[PyPI](https://pypi.org/project/peewee-plus/1.2.1/)
+
+- Add PyPI classifier for Python 3.11
+- Fix SQLite variable limit determination to account for changes in SQLite 3.32
+
 ## Version 1.2.0
 
 View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.2.0),
