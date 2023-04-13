@@ -66,7 +66,25 @@ SQLITE_DEFAULT_PRAGMAS: Dict[str, Any] = {
 }
 
 
-SQLITE_DEFAULT_VARIABLE_LIMIT: int = 999
+SQLITE_DEFAULT_VARIABLE_LIMIT: int
+
+# With SQLite 3.32 (2020-05-22) the devs bumped the default variable limit to
+# 32766. This logic attemps to import the sqlite3 bindings and determine whether
+# the version of the installed SQLite version is greater or equal to 3.32. If
+# the sqlite3 bindings cannot be imported (either because they aren't installed)
+# or because the platform is using SQLite 1 or 2 then it falls back to the
+# 999 value.
+try:
+    import sqlite3
+except ImportError:
+    SQLITE_DEFAULT_VARIABLE_LIMIT = 999
+else:
+    if sqlite3.sqlite_version_info[0] >= 3 or (
+        sqlite3.sqlite_version_info[0] == 3 and sqlite3.sqlite_version_info[1] >= 32
+    ):
+        SQLITE_DEFAULT_VARIABLE_LIMIT = 32766
+    else:
+        SQLITE_DEFAULT_VARIABLE_LIMIT = 999
 
 
 T = TypeVar("T", bound=peewee.Model)
