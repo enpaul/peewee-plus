@@ -55,7 +55,6 @@ jobs:
       - name: Run Toxenv ${{ matrix.python.toxenv }}
         run: poetry run tox -e ${{ matrix.python.toxenv }}
   Check:
-    name: Security, Linting, Formatting, Typing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
