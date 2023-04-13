@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "peewee-plus"
-version = "1.2.0"
+version = "1.2.1"
 description = "Various extensions, helpers, and utilities for Peewee"
 authors = ["Ethan Paul <24588726+enpaul@users.noreply.github.com>"]
 repository = "https://github.com/enpaul/peewee-plus/"

@@ -32,7 +32,7 @@ import peewee
 
 
 __title__ = "peewee-plus"
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 __license__ = "MIT"
 __summary__ = "Various extensions, helpers, and utilities for Peewee"
 __url__ = "https://github.com/enpaul/peewee-plus/"
