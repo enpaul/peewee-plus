@@ -8,6 +8,15 @@ import peewee_plus
 from .fixtures import fakedb
 
 
+def test_public_api():
+    """Test that the public API components are exposed via ``__all__``"""
+
+    assert peewee_plus.calc_batch_size.__name__ in peewee_plus.__all__
+    assert peewee_plus.flat_transaction.__name__ in peewee_plus.__all__
+    assert "SQLITE_DEFAULT_VARIABLE_LIMIT" in peewee_plus.__all__
+    assert "SQLITE_DEFAULT_PRAGMAS" in peewee_plus.__all__
+
+
 def test_sqlite(fakedb):
     """Test the calculation of batch sizes on SQLite"""
 
