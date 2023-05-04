@@ -11,6 +11,12 @@ import peewee_plus
 from .fixtures import fakedb
 
 
+def test_public_api():
+    """Test that the public API components are exposed via ``__all__``"""
+
+    assert peewee_plus.TimedeltaField.__name__ in peewee_plus.__all__
+
+
 def test_conversion(fakedb):
     """Test basic usage of PathField for roundtrip compatibility"""
 

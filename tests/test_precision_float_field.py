@@ -8,6 +8,12 @@ import peewee_plus
 from .fixtures import fakedb
 
 
+def test_public_api():
+    """Test that the public API components are exposed via ``__all__``"""
+
+    assert peewee_plus.PrecisionFloatField.__name__ in peewee_plus.__all__
+
+
 # There isn't anything we can really test here since this field implements
 # a MySQL-specific syntax and we test with SQLite. This test is here just
 # to ensure that the behavior is consistent with the normal FloatField when
