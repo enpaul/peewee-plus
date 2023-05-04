@@ -317,6 +317,8 @@ class JSONField(peewee.TextField):  # pylint: disable=abstract-method
 
     :param dump_params: Additional keyword arguments to unpack into :func:`json.dump`
     :param load_params: Additional keyword arguments to unpack into :func:`json.load`
+    :raises ValueError: When attempting to set a non-JSON serializable object to the field
+    :raises peewee.IntegrityError: When the underlying database value is not JSON serializable
     """
 
     def __init__(
@@ -334,7 +336,7 @@ class JSONField(peewee.TextField):  # pylint: disable=abstract-method
         try:
             return super().db_value(json.dumps(value, **self.dump_params))
         except TypeError as err:
-            raise peewee.IntegrityError(
+            raise ValueError(
                 f"Failed to JSON encode object of type '{type(value)}'"
             ) from err
 
