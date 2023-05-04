@@ -17,6 +17,7 @@ Various extensions, helpers, and utilities for `Peewee`_
 .. _`Peewee documentation`: https://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings
 """
 import contextlib
+import datetime
 import enum
 import functools
 import json
@@ -54,6 +55,7 @@ __all__ = [
     "PrecisionFloatField",
     "SQLITE_DEFAULT_PRAGMAS",
     "SQLITE_DEFAULT_VARIABLE_LIMIT",
+    "TimedeltaField",
 ]
 
 
@@ -399,3 +401,22 @@ class EnumField(peewee.CharField):  # pylint: disable=abstract-method
             raise peewee.IntegrityError(
                 f"Enum {self.enumeration.__name__} has no value with name '{value}'"
             ) from None
+
+
+class TimedeltaField(peewee.BigIntegerField):
+    """Field class for storing python-native Timedelta objects
+
+    This is really just a helper wrapper around an integer field that performs the second conversions
+    automatically. It is a helpful helper though, so it's included.
+
+    .. note:: To avoid issues with float precision, this field stores the database value as an integer.
+              However, this necessitates the usage of the BigInt type to avoid overflowing the value.
+              Essentially, the value this field ends up storing is the number of microseconds in the
+              timedelta.
+    """
+
+    def db_value(self, value: datetime.timedelta) -> int:
+        return super().db_value(int(value.total_seconds() * 1000000))
+
+    def python_value(self, value: int) -> datetime.timedelta:
+        return datetime.timedelta(seconds=super().python_value(value) / 1000000)
