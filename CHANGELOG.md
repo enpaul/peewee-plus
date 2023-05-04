@@ -2,6 +2,16 @@
 
 See also: [Github Release Page](https://github.com/enpaul/peewee-plus/releases).
 
+## Version 1.3.0
+
+View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.3.0),
+[PyPI](https://pypi.org/project/peewee-plus/1.3.0/)
+
+- Add field for storing Datetime Timedeltas
+- **BREAKING CHANGE**: Update `JSONField` to raise `ValueError` instead of
+  `IntegrityError` on bad data write
+- Update tests to account for more cases and test public API validity
+
 ## Version 1.2.1
 
 View this release on: [Github](https://github.com/enpaul/peewee-plus/releases/tag/1.2.1),
