@@ -79,6 +79,10 @@ a runtime value.
 
 `EnumField` - A Peewee database field for storing Enums by name
 
+`TimedeltaField` A Peewee database field for natively storing
+[`datetime.timedelta`](https://docs.python.org/3/library/datetime.html#datetime.timedelta)
+objects
+
 ## For Developers
 
 All project contributors and participants are expected to adhere to the
