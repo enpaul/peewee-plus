@@ -31,3 +31,10 @@ def test_about():
         )
         is True
     )
+
+
+def test_all():
+    """Test that the string entries in ``__all__`` are correct"""
+
+    for item in peewee_plus.__all__:
+        assert hasattr(peewee_plus, item)
