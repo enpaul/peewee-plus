@@ -14,7 +14,8 @@ release history.
 
 ## Documentation
 
-*The documentation for this project is currently a work in progress. Please see the source code for complete docs*
+*The documentation for this project is currently a work in progress. Please see the source
+code for complete docs*
 
 - [Installing](#installing)
 - [Features](#features)
@@ -57,34 +58,32 @@ when using SQLite
 
 ### Functions
 
-[`calc_batch_size`](blob/devel/peewee_plus.py#L93) - Helper function for writing
-backend-agnostic batch queries while accounting for the
+`calc_batch_size` - Helper function for writing backend-agnostic batch queries while
+accounting for the
 [SQLite max variable limit](https://www.sqlite.org/limits.html#max_variable_number).
 
-[`flat_transaction`](blob/devel/peewee_plus.py#L159) - Decorator function for wrapping
-callables in a database transaction without creating nested transactions
+`flat_transaction` - Decorator function for wrapping callables in a database transaction
+without creating nested transactions
 
 ### Classes
 
-[`PathField`](blob/devel/peewee_plus.py#204) - A Peewee database field for storing
+`PathField` - A Peewee database field for storing
 [Pathlib](https://docs.python.org/3/library/pathlib.html) objects, optionally relative to
 a runtime value.
 
-[`PrecisionFloatField`](blob/devel/peewee_plus.py#L262) - A Peewee database field for
-storing floats while specifying the
+`PrecisionFloatField` - A Peewee database field for storing floats while specifying the
 [MySQL precision parameters](https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html)
 `M` and `D`
 
-[`JSONField`](blob/devel/peewee_plus.py#L293) - A Peewee database field for storing
-arbitrary JSON-serializable data
+`JSONField` - A Peewee database field for storing arbitrary JSON-serializable data
 
-[`EnumField`](blob/devel/peewee_plus.py#L348) - A Peewee database field for storing Enums
-by name
+`EnumField` - A Peewee database field for storing Enums by name
 
 ## For Developers
 
 All project contributors and participants are expected to adhere to the
-[Contributor Covenant Code of Conduct, v2](CODE_OF_CONDUCT.md) ([external link](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)).
+[Contributor Covenant Code of Conduct, v2](CODE_OF_CONDUCT.md)
+([external link](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)).
 
 The `devel` branch has the latest (and potentially unstable) changes. The stable releases
 are tracked on [Github](https://github.com/enpaul/peewee-plus/releases),
