@@ -49,12 +49,11 @@ import peewee_plus
 
 ### Constants
 
-`SQLITE_DEFAULT_PRAGMAS` - The default pragmas to use with an SQLite database connection,
-taken directly from the
-[Peewee docs](http://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings).
-
-`SQLITE_DEFAULT_VARIABLE_LIMIT` - The maximum number of variables an SQL query can use
-when using SQLite
+| `SQLITE_DEFAULT_PRAGMAS` | The default pragmas to use with an SQLite database
+connection, taken directly from the
+[Peewee docs](http://docs.peewee-orm.com/en/latest/peewee/database.html#recommended-settings)
+| | `SQLITE_DEFAULT_VARIABLE_LIMIT` | The maximum number of variables an SQL query can use
+when using SQLite |
 
 ### Functions
 
@@ -68,8 +67,8 @@ without creating nested transactions
 ### Classes
 
 `PathField` - A Peewee database field for storing
-[Pathlib](https://docs.python.org/3/library/pathlib.html) objects, optionally relative to
-a runtime value.
+[pathlib.Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path) objects,
+optionally relative to a runtime value.
 
 `PrecisionFloatField` - A Peewee database field for storing floats while specifying the
 [MySQL precision parameters](https://dev.mysql.com/doc/refman/8.0/en/floating-point-types.html)
@@ -77,7 +76,8 @@ a runtime value.
 
 `JSONField` - A Peewee database field for storing arbitrary JSON-serializable data
 
-`EnumField` - A Peewee database field for storing Enums by name
+`EnumField` - A Peewee database field for storing
+[`enum.Enum`](https://docs.python.org/3/library/enum.html#enum.Enum) objects by name
 
 `TimedeltaField` A Peewee database field for natively storing
 [`datetime.timedelta`](https://docs.python.org/3/library/datetime.html#datetime.timedelta)
